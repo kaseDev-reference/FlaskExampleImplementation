@@ -1,10 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %} templating {% endblock %}
+{% block content %}
+    <h2>Templating and Rendering</h2>
+    <p>Templates make it easy for the html that is sent to the browser
+       to be manipulated and changed by code on the backend before it is
+       parsed. Some useful features include the ability to extend an html
+       page from another page and use python values and control flow.
+    </p>
 
-</body>
-</html>
+    <h4>html extending</h4>
+    {% raw %}
+    <p>The header for this and all other pages on this site are a good example
+       of the utility of html extensions. This is done through blocks denoted with
+       {% block block_name %}{% endblock %} and {% extends "parent.html" %}. The
+       parent html page will define the structure of the page and declare the blocks
+       while the child html page will extend the parent and fill the named blocks
+       with content.
+    </p>
+    {% endraw %}
+
+    <h4>Accessing variables and using control flow</h4>
+    <p>Passing Python variables to the html page is a prime feature of Flask and Jinja.
+       It is done by passing a named argument to render_template() and then using that
+       name to reference the variable within html inside double curly braces like so
+       {% raw %} {{  }} {% endraw %}.
+    </p>
+    <p>As an example, the name <strong>{{ name }}</strong> comes from Python. And we can also
+       deal with more complex data like lists and objects. The following list is a good
+       example of this.
+    </p>
+    <ul>
+    {% for item in items %}
+        {% if item.startswith('f') %}
+            <li style="color: red">{{ item }}</li>
+        {% else %}
+            <li style="color: blue">{{ item }}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    <p>The above was achieved by passing a list with 4 items from python to this html page,
+       iterating through the list 1 item at a time, and then using an if statement to
+       selectively color the item based on the first letter of the word.
+    </p>
+{% endblock %}

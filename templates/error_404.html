@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Custom Error 404</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %} Custom Error 404 {% endblock %}
+{% block content %}
     <h1>ERROR 404</h1>
-    <p>we don't service this url, you're in the wrong place, go back. </p>
-</body>
-</html>
+    <p>This url is not serviced. But I still threw you a custom page to tell you that.</p>
+{% endblock %}

@@ -11,14 +11,16 @@ def index():
     return render_template('index.html')
 
 
+@app.route("/templating")
+def templating():
+    name = 'John Doe'
+    items = ["first", "second", "third", "fourth", 'fifth', 'sixth']
+    return render_template('templating.html', content=name, items=items)
+
+
 @app.route("/routing")
 def routing():
     return render_template('routing.html')
-
-
-@app.route("/templating")
-def templating():
-    return render_template('templating.html')
 
 
 @app.route("/html-requests")
