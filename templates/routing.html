@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block title %} Dynamic Routing {% endblock %}
 {% block content %}
-<h2>Dynamic Routing</h2>
+    <h2>Dynamic Routing</h2>
+    <p>This feature allows for a set of urls to be mapped to the same Flask function
+       with a variable value being set within the url. Variables allowed in the url
+       can also be restricted to a datatype. In the url, after the ".../routing",
+       type a name followed by a number as if they were files on the server directory
+       to see this in action.
+    </p>
 {% endblock %}

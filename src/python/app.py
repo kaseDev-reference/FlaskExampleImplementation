@@ -23,6 +23,11 @@ def routing():
     return render_template('routing.html')
 
 
+@app.route("/routing/<name>/<int:num>")
+def dynamic_routing(name, num: int):
+    return render_template('dynamic-routing.html', name=name, num=num)
+
+
 @app.route("/html-requests")
 def requests():
     return render_template('request.html')
