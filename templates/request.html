@@ -1,5 +1,37 @@
 {% extends "base.html" %}
 {% block title %} HTTP Requests {% endblock %}
 {% block content %}
-<h2>HTTP Request Processing</h2>
+    <h2>HTTP Request Processing</h2>
+    <p>This page shows how to process GET and POST requests on the backend with Flask.</p>
+    <h4>GET Requests</h4>
+    <p>The GET Method is a way of transmitting data to the server unsecurely through the
+       url. It should never be used for data that needs to remain private like login
+       credentials but it is ideal for data that influences the page in a meaningful way
+       as the data is stored in the url and can be included in the link if shared.
+    </p>
+    <p>To get an example of how a GET Request works, go to the url bar and add
+       "?get_val=" to the end of the current url followed by whatever string you want.
+       It will be displayed under this paragraph.
+    </p>
+    {% if get_val %}
+        <p>The value you typed was: {{ get_val }}</p>
+    {% endif %}
+    <h4>POST Requests</h4>
+    <p>The POST Method is a way of transmitting data to the server in a secure fashion.
+       It should be used in cases where the data in sensitive for if the data should
+       not appear in the url for any reason. The most common use case for POST requests
+       is form processing.
+    </p>
+    <p>Below is a simple form that asks you for your name and your favorite number.
+       Enter that information and click send. This will send that data back to the
+       server where you will be redirected to the dynamic-routing page where this info
+       will be displayed.
+    </p>
+    <form action="#" method="post">
+        <label for="name">Your name:</label><br>
+        <input type="text" name="name" id="name"><br>
+        <label for="number">Your favorite number:</label><br>
+        <input type="text" name="number" id="number"><br>
+        <input type="submit">
+    </form>
 {% endblock %}

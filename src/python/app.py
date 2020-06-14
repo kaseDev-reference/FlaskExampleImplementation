@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 
 template_dir = os.path.abspath('../../templates')
 static_dir = os.path.abspath('../../static')
@@ -28,9 +28,16 @@ def dynamic_routing(name, num: int):
     return render_template('dynamic-routing.html', name=name, num=num)
 
 
-@app.route("/html-requests")
+@app.route("/http-requests", methods=["GET", "POST"])
 def requests():
-    return render_template('request.html')
+    if request.method == "POST":
+        name = request.form["name"]
+        number = request.form["number"]
+        url = "/routing/" + name + "/" + number
+        return redirect(url)
+    else:
+        get_val = request.args.get("get_val")
+        return render_template('request.html', get_val=get_val)
 
 
 @app.errorhandler(404)
